@@ -7,12 +7,13 @@ import { CgCloseO } from "react-icons/cg";
 import style from "./styles/Navbar.module.css";
 
 const Navbar = () => {
-  // const [isClicked, setIsClicked] = React.useState(false);
+  const [isNavOpen, setIsNavOpen] = React.useState(false);
 
-  // const handleClick = () => {
-  //   setIsClicked(isClicked);
-  //   console.log("button clicked!");
-  // };
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+    console.log(isNavOpen);
+    console.log("Button clicked!");
+  };
 
   return (
     <header className={style["header"]}>
@@ -44,10 +45,10 @@ const Navbar = () => {
           </svg>
         </Link>
 
-        <div className={style["desktop"]}>
+        <div className={`${style.desktop} ${isNavOpen ? style.open : ""}`}>
           <ul className={style["nav-items"]}>
             <li className={style["nav-link"]}>
-              <Link href="#" className={style["active"]}>
+              <Link href="#" className={style.active}>
                 Home
               </Link>
             </li>
@@ -69,9 +70,12 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className={style["mobile"]}>
-          <GiHamburgerMenu />
-          <CgCloseO />
+        <div className={style.mobile} onClick={toggleNav}>
+          {/* <div className={`${style.line} ${isNavOpen ? style.open : ""}`} />
+          <div className={`${style.line} ${isNavOpen ? style.open : ""}`} />
+          <div className={`${style.line} ${isNavOpen ? style.open : ""}`} /> */}
+
+          {isNavOpen ? <CgCloseO /> : <GiHamburgerMenu />}
         </div>
       </nav>
     </header>
