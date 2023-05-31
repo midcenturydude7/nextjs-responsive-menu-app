@@ -11,14 +11,12 @@ const Navbar = () => {
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
-    console.log(isNavOpen);
-    console.log("Button clicked!");
   };
 
   return (
     <header className={style["header"]}>
       <nav className={style["nav"]}>
-        <Link href="/">
+        <Link href="/" className={style.logo}>
           <svg
             id="logo-15"
             width="49"
@@ -45,8 +43,11 @@ const Navbar = () => {
           </svg>
         </Link>
 
-        <div className={`${style.desktop} ${isNavOpen ? style.open : ""}`}>
-          <ul className={style["nav-items"]}>
+        <div className={style.desktop}>
+          <ul
+            className={`${style["nav-items"]} ${
+              isNavOpen ? style.isActive : ""
+            }`}>
             <li className={style["nav-link"]}>
               <Link href="#" className={style.active}>
                 Home
